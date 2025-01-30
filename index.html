@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fate Adventure - Maintenance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset some default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .maintenance-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 40px 30px;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .date-info {
+      font-weight: bold;
+    }
+
+    .countdown {
+      font-weight: bold;
+      margin-bottom: 40px;
+      font-size: 1.2rem;
+    }
+
+    .announcement {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .announcement h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="maintenance-container">
+    <h1>Fate Adventure is Under Maintenance</h1>
+    <p>
+      We are currently performing scheduled maintenance to improve your gaming experience.  
+      We sincerely apologize for any inconvenience and appreciate your patience!
+    </p>
+
+    <!-- You can edit this date/time to set your return time. -->
+     <!-- <p>We will be back on <span class="date-info" id="return-date">January 31, 2025 at 12:00 PM</span>.</p> -->
+
+    <!-- Countdown Timer Display -->
+     <!--<p class="countdown">Time Remaining: <span id="countdown-timer">Calculating...</span></p>-->
+
+    <!-- Announcement Section -->
+    <div class="announcement">
+      <h3>Announcement</h3>
+      <p id="announcement-text">
+        <!-- Add or update your latest announcements here -->
+        We are adding new features and fixing bugs. Stay tuned for an even better experience!
+      </p>
+    </div>
+
+    <div class="footer">&copy; 2025 Fate Adventure. All rights reserved.</div>
+  </div>
+
+  <script>
+    // Set your target date/time here
+    const targetDate = new Date("January 31, 2025 12:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      // If the maintenance date has passed
+      if (distance < 0) {
+        document.getElementById("countdown-timer").innerHTML = "We're back!";
+        return;
+      }
+
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown-timer").innerHTML = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    }
+
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
